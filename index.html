@@ -491,9 +491,9 @@
 
         <script>
 
+          //NORAM AM/PM FORMAT
 
-             
-document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function () {
 
     const year = document.getElementById("year");
     const time = document.getElementById("time");
@@ -503,7 +503,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function updateTime() {
             const now = new Date();
-            time.textContent = now.toLocaleTimeString();
+
+            let timeString = now.toLocaleTimeString('en-IN', {
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric',
+                hour12: true
+            });
+
+            // 🔥 Convert am/pm → AM/PM
+            time.textContent = timeString.toUpperCase();
         }
 
         updateTime();
@@ -511,6 +520,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+            //-------00:29:35 = 12:29:35 AM (midnight)----> 24-HOURS FORMAT-----//
+             
+// document.addEventListener("DOMContentLoaded", function () {
+
+//     const year = document.getElementById("year");
+//     const time = document.getElementById("time");
+
+//     if (year && time) {
+//         year.textContent = new Date().getFullYear();
+
+//         function updateTime() {
+//             const now = new Date();
+//             time.textContent = now.toLocaleTimeString();
+//         }
+
+//         updateTime();
+//         setInterval(updateTime, 1000);
+//     }
+
+// });
             
             // --- BOOT SEQUENCE ---
             const terminal = document.getElementById("terminal-output");
