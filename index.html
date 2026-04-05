@@ -212,12 +212,12 @@
             <section
                 class="min-h-screen flex flex-col justify-center items-center text-center"
             >
-                <div
-                    class="mono text-cyan-400 text-xs tracking-[0.5em] mb-8 opacity-0 reveal-text"
-                >
-                   SANTOSH PORTFOLIO // 202
-                    <!-- SYSTEM ARCHITECT // 2025 -->
-                </div>
+                         <div
+    class="mono text-cyan-400 text-xs tracking-[0.5em] mb-8 opacity-0 reveal-text"
+>
+    SANTOSH PORTFOLIO // <span id="year"></span> // <span id="time"></span>
+    <!-- SYSTEM ARCHITECT // 2025 -->
+</div>
 
                 <h1
                     class="hero-glitch opacity-0 reveal-text"
@@ -490,6 +490,28 @@
         </main>
 
         <script>
+
+
+             
+document.addEventListener("DOMContentLoaded", function () {
+
+    const year = document.getElementById("year");
+    const time = document.getElementById("time");
+
+    if (year && time) {
+        year.textContent = new Date().getFullYear();
+
+        function updateTime() {
+            const now = new Date();
+            time.textContent = now.toLocaleTimeString();
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    }
+
+});
+            
             // --- BOOT SEQUENCE ---
             const terminal = document.getElementById("terminal-output");
             const bootBar = document.getElementById("boot-bar");
